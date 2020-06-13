@@ -7,13 +7,17 @@ for num in my_list:
 
 print(counter)
 
+#print(item will not get printed)
+#continue will start the loop over again
 for item in my_list:
     continue
     print(item)
 
+
+#pass will just go to the next line
 i = 0
 
 while i <len(my_list):
     i+=1
-    continue
+    pass
     print(my_list[i])
