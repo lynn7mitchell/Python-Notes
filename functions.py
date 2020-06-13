@@ -65,6 +65,21 @@ help(sum)
 
 
 
+# *args **kwargs
+
+def super_func(*args):
+    print(args)
+    return sum(args)
+
+print(super_func(1,2,3,4))
+
+# **kwargs is the same except its keyword arguments
+
+
+
+
+# TESLA EXERCISE
+
 def checkDriverAge(age):
   # age = input("What is your age?: ")
 
@@ -84,3 +99,28 @@ checkDriverAge(36)
 #checkDriverAge(92);
 #it returns "Powering On. Enjoy the ride!"
 #also make it so that the default age is set to 0 if no argument is given.
+
+
+
+#FUNCTIONS EXERCISE
+
+# my solution
+def highest_even(li):
+    answer = 0
+    for num in li:
+      if num > answer and num % 2 == 0:
+        answer = num
+    return answer
+
+print (highest_even([10,2,3,4,8,11,5,6,16]))
+
+
+# teacher solution
+def highest_even(li):
+  evens = []
+  for item in li:
+    if item % 2 == 0:
+      evens.append(item)
+  return max(evens)
+
+print(highest_even([10,1,2,3,4,8]))
