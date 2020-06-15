@@ -1,21 +1,27 @@
 # OOP
 # Classes
 
+#encapsulation
+#abstraction
+#inheritance
+
 # Classes are camelcase
 class PlayerCharacter:
     # Class Object Attribute
     membership = True
 
-    # __init__ is a magic method or a constructor
+    # __init__ is a magic method or a constructor; 'dunder method'
     # this means you have to give the argument for name
     # 'self' is similar to 'this' in js
     def __init__(self, name='anonymous', age=0):
         if(PlayerCharacter.membership):
-            self.name = name
-            self.age = age
+            # if you see an underscore at the beginning of the variable that means it's 'private'
+            # it changes nothing but tells a developer to leave it alone
+            self._name = name
+            self._age = age
         
     def shout(self):
-        print(f'my name is {self.name}')
+        print(f'my name is {self._name}')
         return 'done shouting'
 
     def run(self):
@@ -43,15 +49,14 @@ player3 = PlayerCharacter.adding_things(2,10)
 player2.attack = 50
 
 print(player1.run())
-print(player1.name, player1.age)
-print(player2.name, player2.age)
-print(player3.name, player3.age)
+print(player1._name, player1._age)
+print(player2._name, player2._age)
+print(player3._name, player3._age)
 
 
 print(player2.attack)
 
 print(player1.shout())
-
 
 
 
