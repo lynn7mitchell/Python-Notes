@@ -5,12 +5,17 @@
 #polymorphism line 42
 
 class User:
+    def __init__(self, email):
+        self.email = email
+
     def sign_in(self):
         print('logged in')
 
 # Wizard inherited the User class' data i.e. the sign_in function
 class Wizard(User):
-    def __init__(self, name, power):
+    def __init__(self, name, power, email):
+        # grabs the user function for email
+        User.__init__(self, email)
         self.name = name
         self.power = power
     
@@ -18,20 +23,26 @@ class Wizard(User):
         print(f'attacking with power of {self.power}')
 
 class Archer(User):
-    def __init__(self, name, num_arrows):
+    def __init__(self, name, num_arrows, email):
+        # grabs the user function for email using super() which does not require self
+        super().__init__(email)        
         self.name = name
-        self.num_arrows = num_arrows
+        self.arrows = num_arrows
     
     def attack(self):
-        print(f'attacking with arrows: {self.num_arrows} arrows left ')
+        print(f'attacking with arrows: {self.arrows} arrows left ')
 
+# multiple inheritance
+class HybridBorg(Wizard, Archer):
+    pass
 
-wizard1 = Wizard('Merlin', 50)
-archer1 = Archer('Robin', 100)
+wizard1 = Wizard('Merlin', 50, 'merlin@gmail.com')
+archer1 = Archer('Robin', 100, 'archer@gmail.com')
+hb1 = HybridBorg('Boris', 37, 'borgie@gmail.com')
 
 wizard1.attack()
 archer1.attack()
-
+hb1.attack()
 # print(wizard1.sign_in())
 
 print(isinstance(wizard1, Wizard))
@@ -50,3 +61,10 @@ player_attack(archer1)
 
 for char in [wizard1, archer1]:
     char.attack()
+
+
+print(wizard1.email)
+
+
+#introspection
+# print(dir(wizard1))
