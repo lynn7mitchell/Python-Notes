@@ -1,5 +1,7 @@
 from functools import reduce
 
+
+
 #1 Capitalize all of the pet names and print the list
 my_pets = ['sisi', 'bibi', 'titi', 'carla']
 

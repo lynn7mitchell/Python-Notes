@@ -4,15 +4,19 @@
 from functools import reduce
 
 
+# lambda expressions
+# a lambda experssion is a function that is only going to be used once
+# lambda param: action(param)
+
 my_list = [1,2,3]
 your_list = [10,20,30]
 
-def multiply_by2(li):
+# def multiply_by2(li):
     # new_list = []
     # for item in li:
     #     new_list.append(item*2)
     # return new_list
-    return li*2
+    # return li*2
 
 # print(multiply_by2(my_list))
 
@@ -21,7 +25,14 @@ def multiply_by2(li):
 # map(action, data we want the action to take place on)
 # map will loop through the list and then use the function multiply_by2 as the action
 # list() turns it into a new list
-print(list(map(multiply_by2, my_list)))
+
+
+# print(list(map(multiply_by2, my_list)))
+
+
+# lambda version
+print('lambda', list(map(lambda item: item*2, my_list)))
+
 
 
 # FILTER
