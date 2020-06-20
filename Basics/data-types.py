@@ -256,6 +256,12 @@ print('x' in user.values()) #false
 
 print(test.items()) #creates a list
 
+# change
+test['w'] = [3,5,4]
+# add
+test['z'] = 'added'
+
+
 #test.clear() clears the dictionary
 #test.copy will copy the dictionary
 #test.pop('x')
