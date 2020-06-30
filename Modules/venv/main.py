@@ -4,6 +4,7 @@ from shopping import shopping_cart
 from utility import *
 
 import built_in_modules
+import pip_example
 
 
 print(shopping_cart.buy('apple'))
