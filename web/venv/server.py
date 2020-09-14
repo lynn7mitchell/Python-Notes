@@ -1,4 +1,9 @@
 from flask import Flask, render_template, url_for, request, redirect
+# csv is built in to python
+# https://docs.python.org/3/library/csv.html
+import csv
+
+
 app = Flask(__name__)
 print(__name__)
 
@@ -29,14 +34,42 @@ def html_page(page_name):
     return render_template(page_name)
 
 
+# https://flask.palletsprojects.com/en/1.1.x/quickstart/#accessing-request-data
+
+# mode a = append
+def write_to_file(data):
+    with open('database.txt', mode='a') as database:
+        email = data['email']
+        subject = data['subject']
+        message = data['message']
+        file = database.write(f'\n{email},{subject},{message}')
+
+# csv is separated by columns
+# CSV stands for comma separated values
+# https://docs.python.org/3/library/csv.html
+def write_to_csv(data):
+    with open('database.csv', newline="", mode='a') as database2:
+        email = data['email']
+        subject = data['subject']
+        message = data['message']
+        # delimiter is what separates the values
+        # quotechar = how many quotes around values
+        csv_writer = csv.writer(database2, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+        csv_writer.writerow([email,subject,message])
+
+# csv.QUOTE_MINIMAL
+# Instructs writer objects to only quote those fields which contain special characters such as delimiter,
+#  quotechar or any of the characters in lineterminator.
+
 @app.route('/submit_form', methods=['POST', 'GET'])
 def submit_form():
     if request.method == 'POST':
         data = request.form.to_dict()
-        print(data)
+        write_to_file(data)
+        write_to_csv(data)
         return redirect('/thankyou.html')
     else:
-        error = 'something went wrong'
+        print('something went wrong')
     # the code below is executed if the request method
     # was GET or the credentials were invalid
     return 'form submitted'
